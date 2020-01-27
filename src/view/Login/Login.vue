@@ -33,6 +33,7 @@ export default {
     },
     reduce(){
       // eslint-disable-next-line no-console
+      
       console.log('sad',this.$store)
       this.$store.commit('reduce_one', 1)
       

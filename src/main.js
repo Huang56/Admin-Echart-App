@@ -4,6 +4,8 @@ import './plugins/element.js'
 import './assets/style/index.scss'
 import router from './router/index'
 import store from './store/index' // vuex
+ 
+import './mock'  //加载一次即可
 Vue.config.productionTip = false
 
 new Vue({

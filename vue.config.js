@@ -5,6 +5,19 @@ function resolve(dir) {
 }
 
 module.exports = {
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    proxy: {  //代理配置
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        // pathRewrite: {
+        //   '^/api': ''
+        // }
+      }
+    },
+  },
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',

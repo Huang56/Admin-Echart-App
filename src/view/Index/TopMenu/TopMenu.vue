@@ -28,7 +28,7 @@
       handleSelect(key, keyPath) {
         // eslint-disable-next-line no-console
         console.log(key, keyPath);
-        this.$router.push(key)
+        this.$router.push(key).catch(err => {err})
         this.activeIndex = key
       }
     }

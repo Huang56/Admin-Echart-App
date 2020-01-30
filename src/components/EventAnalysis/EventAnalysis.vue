@@ -1,12 +1,10 @@
 <template>
-  <div class="dashboard"> Dashboard...</div>
+  <div class="dashboard"> EventAnalysis...</div>
 </template>
 <script>
 export default { 
-    name: "Dashboard",
+    name: "EventAnalysis",
 
-
-    
     };
 </script>
 

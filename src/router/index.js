@@ -3,14 +3,27 @@ import VueRouter from 'vue-router'
 
 import Index from '../view/Index/Index'
 import Login from '../view/Login/Login'
-import DashBoard from '../view/DashBoard/DashBoard'
+import DashBoard from '@/components/DashBoard/DashBoard'
+import EventAnalysis from '@/components/EventAnalysis/EventAnalysis'
 
 Vue.use(VueRouter)
 const routes = [
     {
         path: '/index',
         name: 'index',
-        component: Index
+        component: Index,
+        children: [
+            {
+                path: '/dashboard',
+                name: 'dashboard',
+                component: DashBoard
+            },
+            {
+                path: '/eventanalysis',
+                name: 'eventanalysis',
+                component: EventAnalysis
+            },
+        ]
     },
     {
         path: '/login',
@@ -18,13 +31,8 @@ const routes = [
         component: Login
     },
     {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: DashBoard
-    },
-    {
      path: '/',
-     redirect: 'index'
+     redirect: 'dashboard'
     }
 ]
 

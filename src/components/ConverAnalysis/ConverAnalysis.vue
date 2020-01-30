@@ -13,6 +13,7 @@
                     <el-radio-group v-model="radio" @change="changeBtn">
                     <el-radio-button label="bar">Bar</el-radio-button>
                     <el-radio-button label="line">Line</el-radio-button>
+                    <el-radio-button label="funel">Funel</el-radio-button>
                     <el-radio-button label="stack">Stack</el-radio-button>
                     <el-radio-button label="percent">Percent</el-radio-button>
                     <el-radio-button label="pie">Pie</el-radio-button>
@@ -32,12 +33,11 @@ import TableComp from './TableComp/TableComp'
 import EchartComp from './EchartComp/EchartComp'
 import { getEventData } from '@/api/EventAnalysysApi'
 export default { 
-    name: "EventAnalysis",
+    name: "ConverAnalysis",
     data(){
         return {
             radio: 'line',
-            options: {},
-            oringinOptions: {}
+            options: {}
         }
     },
     components: {
@@ -49,55 +49,13 @@ export default {
              getEventData().then(res => {
                  console.log(res)
                  this.options = res.data
-                 this.oringinOptions = res.data
              })
          },
          changeBtn(val){
             //  drawEchart
-            let options
-            console.log('val === ',val === 'percent');
-            if(val === 'percent'){
-                options = this.percentEchart()
-             } else if(val === 'pie'){
-                options = this.pieEchart()
-             } else {
-                options = this.changeEchart(val)
-             }
-             
-             this.options = options
-         },
-         percentEchart(){
-            let options = this.$deepCopy(this.oringinOptions)
-            let arr = []
-            options.series.forEach( (element ) => {
-                    element.stack = '总量'
-                    element.areaStyle = {}
-                    element.type = 'line'
-                    element.data.forEach((item,index) => {
-                        const isTrue = arr[index] ? 1 : 0
-                        if(!isTrue) arr[index] = 0 
-                        arr[index] += item
-                    })
-            });
-            arr.forEach((item,index) => {
-                options.series.forEach( (element) => {
-                    element.data[index] = (element.data[index] / item * 100).toFixed(2)
-              });
-            })
-            return options
-         },
-         pieEchart(){
-            let options = this.$deepCopy(this.oringinOptions)
-            options.series.forEach( (element ) => {
-                    element.type = 'pie'
-                    element.stack && delete element.stack
-                    element.areaStyle && delete element.areaStyle
-            });
-            return options
-         },
-         changeEchart(val){
-            let options = this.$deepCopy(this.oringinOptions)
+            let options = this.$deepCopy(this.options)
             options.series.forEach(element => {
+                
                 const isStack = val === 'stack' ? 1 : 0
                 if(!isStack) {
                     element.type = val
@@ -109,7 +67,9 @@ export default {
                     element.type = 'line'
                 }
             });
-            return options
+            console.log('options',options);
+            
+             this.options = options
          }
      },
      mounted(){

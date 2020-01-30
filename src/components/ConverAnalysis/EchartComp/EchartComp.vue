@@ -45,9 +45,7 @@ export default {
             this.instance = echarts.init(document.getElementById(this.id), macarons)
         },
         drawEchart(){
-            if( !this.instance ) return
-            this.instance.clear()
-            this.instance.setOption(this.option) 
+            this.instance && this.instance.setOption(this.option)
         },
         resiseEchart(){
             window.onresize = ()=> {

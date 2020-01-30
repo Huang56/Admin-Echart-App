@@ -36,6 +36,7 @@ export default {
     .top_menu{
       flex: 1;
       margin: 0 80px;
+      
     }
   }
   .el-main{

@@ -5,6 +5,7 @@ import Index from '../view/Index/Index'
 import Login from '../view/Login/Login'
 import DashBoard from '@/components/DashBoard/DashBoard'
 import EventAnalysis from '@/components/EventAnalysis/EventAnalysis'
+import ConverAnalysis from '@/components/ConverAnalysis/ConverAnalysis'
 
 Vue.use(VueRouter)
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
                 path: '/eventanalysis',
                 name: 'eventanalysis',
                 component: EventAnalysis
+            },
+            {
+                path: '/converanalysis',
+                name: 'converanalysis',
+                component: ConverAnalysis
             },
         ]
     },

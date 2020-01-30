@@ -3,7 +3,7 @@ import Vue from 'vue'
 
 import comp from './comp'
 import directives from './directives'
-import * as helper from './directives'
+import * as helper from './utils'
 // 注册函数：
 function _forEachObjecj(obj, projection){
     try {

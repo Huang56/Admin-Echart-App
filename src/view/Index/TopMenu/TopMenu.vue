@@ -15,14 +15,18 @@
   </el-submenu>
   <el-menu-item index="3" disabled>消息中心</el-menu-item>
   <el-menu-item index="/eventanalysis">事件分析</el-menu-item>
+  <el-menu-item index="/converanalysis">转化分析</el-menu-item>
 </el-menu>    
 </template>
 <script>
   export default {
     data() {
       return {
-        activeIndex: '/dashboard',
+        activeIndex: '',
       };
+    },
+    mounted(){
+      this.activeIndex = this.$route.path
     },
     methods: {
       handleSelect(key, keyPath) {

@@ -1,5 +1,68 @@
 {
+    "message": "success",
+    "code": 200,
     "data": {
-        "data2": 123
+        "chart": {
+            "series": [
+                {
+                    "group_by_type": "",
+                    "event_label": "A",
+                    "result_type_unit": "",
+                    "event_name_alias": "",
+                    "attr_value_name": "",
+                    "prefix_key": "",
+                    "avg": 10989.0,
+                    "event_id": 3164,
+                    "sum": 21978.0,
+                    "is_compute": false,
+                    "event_name": "app_launch",
+                    "is_disabled": null,
+                    "group_by_array": null,
+                    "data": [
+                        10307,
+                        11671
+                    ],
+                    "result_type_label": "\u603b\u6b21\u6570\uff08pv\uff09",
+                    "name": "A, 1",
+                    "group_by_key": "__all",
+                    "filter_value": "\u5168\u4f53\u7528\u6237",
+                    "suffix_key": "__all",
+                    "filter_label": 1,
+                    "result_type": "events"
+                },
+                {
+                    "group_by_type": "",
+                    "event_label": "B",
+                    "result_type_unit": "",
+                    "event_name_alias": "",
+                    "attr_value_name": "",
+                    "prefix_key": "",
+                    "avg": 10989.0,
+                    "event_id": 3164,
+                    "sum": 21978.0,
+                    "is_compute": false,
+                    "event_name": "app_launch",
+                    "is_disabled": null,
+                    "group_by_array": null,
+                    "data": [
+                        10307,
+                        11671
+                    ],
+                    "result_type_label": "\u603b\u6b21\u6570\uff08pv\uff09",
+                    "name": "B, 1",
+                    "group_by_key": "__all",
+                    "filter_value": "\u5168\u4f53\u7528\u6237",
+                    "suffix_key": "__all",
+                    "filter_label": 1,
+                    "result_type": "events"
+                }
+            ],
+            "xAxis": {
+                "data": [
+                    "20191231",
+                    "20200101"
+                ]
+            }
+        }
     }
 }

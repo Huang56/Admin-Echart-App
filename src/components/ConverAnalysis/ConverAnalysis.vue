@@ -7,6 +7,7 @@
      <el-main>
         <div class="common_container">
               <EchartComp :options="options"/>
+
          </div>
          <div class="common_container">
                <div>
@@ -32,53 +33,50 @@
 import TableComp from './TableComp/TableComp'
 import EchartComp from './EchartComp/EchartComp'
 import { getEventData } from '@/api/EventAnalysysApi'
-export default { 
-    name: "ConverAnalysis",
-    data(){
-        return {
-            radio: 'line',
-            options: {}
-        }
+export default {
+  name: 'ConverAnalysis',
+  data () {
+    return {
+      radio: 'line',
+      options: {}
+    }
+  },
+  components: {
+    TableComp,
+    EchartComp
+  },
+  methods: {
+    pullEventData () {
+      getEventData().then(res => {
+        console.log(res)
+        this.options = res.data
+      })
     },
-    components: {
-        TableComp,
-        EchartComp
-     },
-     methods:{
-         pullEventData(){
-             getEventData().then(res => {
-                 console.log(res)
-                 this.options = res.data
-             })
-         },
-         changeBtn(val){
-            //  drawEchart
-            let options = this.$deepCopy(this.options)
-            options.series.forEach(element => {
-                
-                const isStack = val === 'stack' ? 1 : 0
-                if(!isStack) {
-                    element.type = val
-                    element.stack && delete element.stack
-                    element.areaStyle && delete element.areaStyle
-                } else {
-                    element.stack = '总量'
-                    element.areaStyle = {}
-                    element.type = 'line'
-                }
-            });
-            console.log('options',options);
-            
-             this.options = options
-         }
-     },
-     mounted(){
-         this.pullEventData()
-     }
-    };
+    changeBtn (val) {
+      //  drawEchart
+      const options = this.$deepCopy(this.options)
+      options.series.forEach(element => {
+        const isStack = val === 'stack' ? 1 : 0
+        if (!isStack) {
+          element.type = val
+          element.stack && delete element.stack
+          element.areaStyle && delete element.areaStyle
+        } else {
+          element.stack = '总量'
+          element.areaStyle = {}
+          element.type = 'line'
+        }
+      })
+      console.log('options', options)
+
+      this.options = options
+    }
+  },
+  mounted () {
+    this.pullEventData()
+  }
+}
 </script>
-
-
 
 <style lang='scss' scoped>
 .side_container{
@@ -89,5 +87,4 @@ export default {
     padding: 20px;
 }
 </style>
-
 

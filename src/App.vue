@@ -11,7 +11,7 @@
     </div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div> -->
-  <div id="app"> 
+  <div id="app">
     <router-view></router-view>
   </div>
 </template>

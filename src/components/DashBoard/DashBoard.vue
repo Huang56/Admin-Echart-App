@@ -6,14 +6,13 @@
 </template>
 <script>
 import SideNav from './SideNav/SideNav'
-export default { 
-    name: "Dashboard",
-    components: {
-      SideNav
-    }
-    };
+export default {
+  name: 'Dashboard',
+  components: {
+    SideNav
+  }
+}
 </script>
 <style lang='scss' scoped>
 </style>
-
 

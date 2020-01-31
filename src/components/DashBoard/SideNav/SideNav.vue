@@ -45,20 +45,18 @@
 </template>
 <script>
 /* eslint-disable no-console */
-export default { 
-    name: "SideNav",
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
+export default {
+  name: 'SideNav',
+  methods: {
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
     }
-    };
+  }
+}
 </script>
-
-
 
 <style lang='scss' scoped>
 .side-nav {
@@ -86,5 +84,4 @@ export default {
     @extend %Single_Line_Omitted;
 }
 </style>
-
 

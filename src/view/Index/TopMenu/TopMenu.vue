@@ -5,7 +5,9 @@
     mode="horizontal"
     @select="handleSelect"
   >
-    <el-menu-item index="/dashboard">看板</el-menu-item>
+    <el-menu-item index="/dashboard">{{
+      $t("top_menu.dashboard")
+    }}</el-menu-item>
     <el-submenu index="2">
       <template slot="title">我的工作台</template>
       <el-menu-item index="2-1">选项1</el-menu-item>

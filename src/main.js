@@ -4,22 +4,23 @@ import './plugins/element.js'
 import './assets/style/index.scss'
 import router from './router/index'
 import store from './store/index' // vuex
+import i18n from './lang/index' // vuex
 import ElementUI from 'element-ui'
 
 import './common' // 加载一次即可
 
-import locale from 'element-ui/lib/locale/lang/en'
-
-Vue.use(ElementUI, { locale })
-
 import './mock' // 加载一次即可
 Vue.config.productionTip = false
-// eslint-disable-next-line no-console
-
+Vue.use(ElementUI, {
+  i18n: (key, value) => {
+    i18n.t(key, value)
+  }
+})
 // console.log(process);
 
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

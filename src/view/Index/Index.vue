@@ -3,11 +3,28 @@
     <el-header class="top_header">
       <div>Aaron-Admin</div>
       <TopMenu class="top_menu" />
-      <div>Login_out</div>
+      <div>
+        <el-dropdown
+          trigger="click"
+          @command="selectLagurage"
+          @click="selectLagurage"
+        >
+          <span class="el-dropdown-link">
+            {{ selected }}<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item icon="el-icon-plus" command="中文">{{
+              chinese
+            }}</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-plus" command="English">{{
+              english
+            }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
     </el-header>
     <el-main>
       <router-view> </router-view>
-
     </el-main>
   </el-container>
 </template>
@@ -15,8 +32,21 @@
 import TopMenu from './TopMenu/TopMenu'
 export default {
   name: '',
+  data () {
+    return {
+      chinese: '中文',
+      english: 'English',
+      selected: '中文'
+    }
+  },
   components: {
     TopMenu
+  },
+  methods: {
+    selectLagurage (val) {
+      this.$i18n.locale = val
+      this.selected = val
+    }
   }
 }
 </script>

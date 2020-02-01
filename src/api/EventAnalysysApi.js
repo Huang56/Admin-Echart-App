@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import apiUtils from './index.js'
 
-export async function getEventData () {
+export async function getEventData (params) {
   console.log('getEventData')
-  const result = await apiUtils.get('/eventAnalysys')
+  const result = await apiUtils.post('/eventAnalysys', params)
   return result
 }
 

@@ -17,6 +17,7 @@
         </div>
         <EchartComp :options="options" :index="2" />
       </div>
+      <el-button type="primary" @click="pullEventData()">切换数据</el-button>
       <div class="common_container">
         <TableComp
           :tableData="tableData"
@@ -42,7 +43,8 @@ export default {
       oringinOptions: {},
       tableDataLabel: [],
       tableData: [],
-      multipleSelection: []
+      multipleSelection: [],
+      switch: false
     }
   },
   components: {
@@ -51,7 +53,11 @@ export default {
   },
   methods: {
     pullEventData () {
-      getEventData().then(res => {
+      this.switch = !this.switch
+      const params = {
+        switch: this.switch
+      }
+      getEventData(params).then(res => {
         console.log(res)
         this.options = res.data
         this.oringinOptions = res.data
@@ -148,6 +154,9 @@ export default {
           tableDataItem.checkbox_disabled = true
         } else {
           tableDataItem.selected = false
+          tableDataItem.checkbox_disabled = false
+        }
+        if (series.length === 1) {
           tableDataItem.checkbox_disabled = false
         }
         tableDataItem.id = index

@@ -5,17 +5,35 @@
     border
     @select="handleSelectionChange"
     @select-all="handleSelectionChangeAll"
+    :max-height="300"
     style="width: 100%"
   >
     <el-table-column type="selection" :selectable="handleDisable" width="55"></el-table-column>
+    <template  v-for="(item,index) in tableDataLabelComp">
     <el-table-column
-      v-for="(item,index) in tableDataLabelComp"
+      v-if="item.prop === 'event_ponint'"
       :prop="item.prop"
       :label="item.label"
       :width="item.width"
       :key="index"
       :sortable="item.sortable"
-    ></el-table-column>
+    >
+     <template slot-scope="scope" >
+        <el-button @click="handleClick(scope.row)" type="text" size="small" :disabled="!scope.row.selected">查看</el-button>
+        <el-button type="text" size="small">编辑</el-button>
+      </template>
+    </el-table-column>
+    <el-table-column
+      v-if="item.prop !== 'event_ponint'"
+      :prop="item.prop"
+      :label="item.label"
+      :width="item.width"
+      :key="index"
+      :sortable="item.sortable"
+    >
+    </el-table-column>
+    </template>
+
   </el-table>
 </template>
 <script>
@@ -93,6 +111,10 @@ export default {
           this.$refs.tableRef && this.$refs.tableRef.toggleRowSelection(item, true)
         }
       })
+    },
+    handleClick (val) {
+      // 默认选中
+      this.$emit('eventBtn', val)
     }
   },
   updated () {

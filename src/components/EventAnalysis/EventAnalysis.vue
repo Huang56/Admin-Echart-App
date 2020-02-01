@@ -1,8 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px" class="side_container">
-      side
-    </el-aside>
+    <el-aside width="200px" class="side_container">side</el-aside>
     <el-main>
       <div class="common_container">
         <EchartComp :options="options" :index="1" />
@@ -20,7 +18,13 @@
         <EchartComp :options="options" :index="2" />
       </div>
       <div class="common_container">
-        <TableComp />
+        <TableComp
+          :tableData="tableData"
+          :tableDataLabel="tableDataLabel"
+          :multipleSelection="multipleSelection"
+          @mulSelectedData="onMulSelectedData"
+          @mulSelectedAllData="onMulSelectedAllData"
+        />
       </div>
     </el-main>
   </el-container>
@@ -35,7 +39,10 @@ export default {
     return {
       radio: 'line',
       options: {},
-      oringinOptions: {}
+      oringinOptions: {},
+      tableDataLabel: [],
+      tableData: [],
+      multipleSelection: []
     }
   },
   components: {
@@ -48,6 +55,9 @@ export default {
         console.log(res)
         this.options = res.data
         this.oringinOptions = res.data
+        if (res.code === 200) {
+          this.handleTableData(res.data.chart)
+        }
       })
     },
     changeBtn (val) {
@@ -109,6 +119,123 @@ export default {
         }
       })
       return options
+    },
+    handleTableData (val) {
+      const tableData = []
+      const tableDataLabel = []
+      const series = val.series
+      const xAxis = val.xAxis.data
+      xAxis.forEach((item, index) => {
+        // const tableDataItem = {}
+        const tableDataLabelItem = {}
+        tableDataLabelItem.prop = item
+        tableDataLabelItem.label = item
+        tableDataLabelItem.width = '120'
+        tableDataLabelItem.sortable = true
+        tableDataLabel[index] = tableDataLabelItem
+      })
+      series.forEach((item, index) => {
+        const tableDataItem = {}
+        item.data.forEach((item, index) => {
+          const prop = xAxis[index]
+          tableDataItem[prop] = item
+        })
+        tableDataItem.event_ponint = []
+        tableDataItem.sum = item.sum
+        tableDataItem.avg = item.avg
+        if (index < 20) {
+          tableDataItem.selected = true
+          tableDataItem.checkbox_disabled = true
+        } else {
+          tableDataItem.selected = false
+          tableDataItem.checkbox_disabled = false
+        }
+        tableDataItem.id = index
+        tableData[index] = tableDataItem
+      })
+
+      const fontLable = [
+        { prop: 'event_ponint', label: '事件.指标', width: '140' },
+        { prop: 'sum', label: '总数' },
+        { prop: 'avg', label: '平均值', width: '140' }
+      ]
+      this.tableDataLabel = [...fontLable, ...tableDataLabel]
+      this.tableData = tableData
+      console.log('tableDataLabel', this.tableDataLabel)
+      console.log('tableData', this.tableData)
+    },
+    onMulSelectedData (val, rowId) {
+      const length = val.length
+      const tableData = this.$deepCopy(this.tableData)
+
+      if (length === 1) {
+        tableData.forEach(item => {
+          item.checkbox_disabled = true
+          item.selected = false
+          const isTrue = val.some((filterItem) => {
+            return item.id === filterItem.id
+          })
+          if (isTrue) {
+            item.selected = true
+            item.checkbox_disabled = false
+          }
+        })
+      } else if (length < 20) {
+        tableData.forEach(item => {
+          item.checkbox_disabled = true
+          if (item.id === rowId) {
+            item.selected = !item.selected
+          }
+        })
+      } else if (length === 20) {
+        tableData.forEach(item => {
+          const isTrue = val.some((filterItem) => {
+            return item.id === filterItem.id
+          })
+          if (isTrue) {
+            item.selected = true
+            item.checkbox_disabled = true
+          } else {
+            item.selected = false
+            item.checkbox_disabled = false
+          }
+        })
+      }
+      this.tableData = tableData
+    },
+    onMulSelectedAllData (val) {
+      const length = val.length
+      const tableData = this.$deepCopy(this.tableData)
+      if (length === 20) {
+        tableData.forEach((item, index) => {
+          item.checkbox_disabled = true
+          if (index === 0) {
+            item.selected = true
+            item.checkbox_disabled = false
+          } else {
+            item.selected = false
+          }
+        })
+      } else if (length > 20) {
+        let flag = tableData.filter((item, index) => {
+          return item.selected === true
+        }).length
+        if (flag < 20) {
+          tableData.forEach((item, index) => {
+            item.checkbox_disabled = true
+            const isFalse = item.selected === false
+            if (flag < 20 && isFalse) {
+              item.selected = true
+              flag++
+            } else if (item.selected !== true) {
+              item.selected = false
+              item.checkbox_disabled = false
+            }
+          })
+        }
+      }
+      this.tableData = tableData
+      console.log('onMulSelectedALLData162', val)
     }
   },
   mounted () {

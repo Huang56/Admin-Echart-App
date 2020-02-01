@@ -21,8 +21,8 @@
       </el-submenu>
     </el-submenu>
     <el-menu-item index="3" disabled>消息中心</el-menu-item>
-    <el-menu-item index="/eventanalysis">事件分析</el-menu-item>
-    <el-menu-item index="/converanalysis">转化分析</el-menu-item>
+    <el-menu-item index="/eventanalysis">{{$t("top_menu.event_analysis")}}</el-menu-item>
+    <el-menu-item index="/converanalysis">{{$t("top_menu.convert_analysis")}}</el-menu-item>
   </el-menu>
 </template>
 <script>

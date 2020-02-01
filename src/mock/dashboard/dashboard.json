@@ -1,0 +1,259 @@
+{
+    "message": "success",
+    "code": 200,
+    "data": {
+        "available": 3,
+        "layout": [
+            {
+                "i": "6771985836817777160",
+                "h": 1,
+                "moved": false,
+                "static": false,
+                "w": 1,
+                "y": 0,
+                "x": 0,
+                "isResizable": false
+            },
+            {
+                "i": "6775072279895212557",
+                "h": 1,
+                "moved": false,
+                "static": false,
+                "w": 1,
+                "y": 0,
+                "x": 1,
+                "isResizable": false
+            },
+            {
+                "i": "6779474177930822158",
+                "h": 1,
+                "moved": false,
+                "static": false,
+                "w": 1,
+                "y": 1,
+                "x": 0,
+                "isResizable": false
+            }
+        ],
+        "reports": [
+            {
+                "status": 1,
+                "owners": [
+                    "",
+                    "3408074654616283",
+                    ""
+                ],
+                "report_type": "event_analysis",
+                "app_id": 2166,
+                "report_name": "\u8f6c\u5316\u5206\u6790\u6298\u7ebf \u8303\u56f4",
+                "dsl_content": {
+                    "fe_extra": {
+                        "show_yesterday": 0,
+                        "series_type": "line",
+                        "contains_today": 0,
+                        "showNameMap": {}
+                    },
+                    "period": {
+                        "range": [
+                            1574092800,
+                            1576598400
+                        ],
+                        "interval": "day",
+                        "type": "range"
+                    },
+                    "group_by": [],
+                    "query_events": [
+                        {
+                            "result_type_label": "\u603b\u6b21\u6570\uff08pv\uff09",
+                            "event_type": "origin",
+                            "event_id": 3164,
+                            "label": "A",
+                            "group_by": [],
+                            "attrs": {
+                                "content": [],
+                                "logic": "and"
+                            },
+                            "result_type_unit": "",
+                            "type": "singleton",
+                            "result_type": {
+                                "type": "events",
+                                "measure": null
+                            }
+                        }
+                    ],
+                    "filters": [
+                        {
+                            "label": 1,
+                            "attrs": {
+                                "content": [],
+                                "logic": "and"
+                            },
+                            "name": "\u5168\u4f53\u7528\u6237"
+                        }
+                    ],
+                    "__version": 1
+                },
+                "owner_info": {
+                    "": {},
+                    "3408074654616283": {
+                        "username": "3408074654616283",
+                        "nickname": "\u6708\u683c\u683c",
+                        "email": "luoyue@oppo.com"
+                    }
+                },
+                "is_core": false,
+                "report_id": "6771985836817777160"
+            },
+            {
+                "status": 1,
+                "owners": [
+                    "",
+                    "3408074654616283",
+                    ""
+                ],
+                "report_type": "event_analysis",
+                "app_id": 2166,
+                "report_name": "\u6298\u7ebf\u56fe/\u5305\u542b\u4eca\u5929",
+                "dsl_content": {
+                    "fe_extra": {
+                        "show_yesterday": 0,
+                        "series_type": "line",
+                        "contains_today": 1,
+                        "showNameMap": {}
+                    },
+                    "period": {
+                        "type": "last",
+                        "interval": "day",
+                        "last": 30
+                    },
+                    "group_by": [],
+                    "query_events": [
+                        {
+                            "result_type_label": "\u603b\u6b21\u6570\uff08pv\uff09",
+                            "event_type": "origin",
+                            "event_id": 3164,
+                            "label": "A",
+                            "group_by": [],
+                            "attrs": {
+                                "content": [],
+                                "logic": "and"
+                            },
+                            "result_type_unit": "",
+                            "type": "singleton",
+                            "result_type": {
+                                "type": "events",
+                                "measure": null
+                            }
+                        }
+                    ],
+                    "filters": [
+                        {
+                            "label": 1,
+                            "attrs": {
+                                "content": [],
+                                "logic": "and"
+                            },
+                            "name": "\u5168\u4f53\u7528\u6237"
+                        }
+                    ],
+                    "__version": 1
+                },
+                "owner_info": {
+                    "": {},
+                    "3408074654616283": {
+                        "username": "3408074654616283",
+                        "nickname": "\u6708\u683c\u683c",
+                        "email": "luoyue@oppo.com"
+                    }
+                },
+                "is_core": false,
+                "report_id": "6775072279895212557"
+            },
+            {
+                "status": 1,
+                "owners": [
+                    "",
+                    "3408074654616283",
+                    ""
+                ],
+                "report_type": "event_analysis",
+                "app_id": 2166,
+                "report_name": "pie",
+                "dsl_content": {
+                    "fe_extra": {
+                        "show_yesterday": 0,
+                        "series_type": "pie",
+                        "contains_today": 0,
+                        "showNameMap": {}
+                    },
+                    "period": {
+                        "type": "last",
+                        "interval": "day",
+                        "last": 30
+                    },
+                    "group_by": [],
+                    "query_events": [
+                        {
+                            "result_type_label": "\u603b\u6b21\u6570\uff08pv\uff09",
+                            "event_type": "origin",
+                            "event_id": 3164,
+                            "label": "A",
+                            "group_by": [],
+                            "attrs": {
+                                "content": [],
+                                "logic": "and"
+                            },
+                            "result_type_unit": "",
+                            "type": "singleton",
+                            "result_type": {
+                                "type": "events",
+                                "measure": null
+                            }
+                        },
+                        {
+                            "result_type_label": "\u603b\u6b21\u6570\uff08pv\uff09",
+                            "event_type": "origin",
+                            "event_id": 3164,
+                            "label": "B",
+                            "group_by": [],
+                            "attrs": {
+                                "content": [],
+                                "logic": "and"
+                            },
+                            "result_type_unit": "",
+                            "type": "singleton",
+                            "result_type": {
+                                "type": "events",
+                                "measure": null
+                            }
+                        }
+                    ],
+                    "filters": [
+                        {
+                            "label": 1,
+                            "attrs": {
+                                "content": [],
+                                "logic": "and"
+                            },
+                            "name": "\u5168\u4f53\u7528\u6237"
+                        }
+                    ],
+                    "__version": 1
+                },
+                "owner_info": {
+                    "": {},
+                    "3408074654616283": {
+                        "username": "3408074654616283",
+                        "nickname": "\u6708\u683c\u683c",
+                        "email": "luoyue@oppo.com"
+                    }
+                },
+                "is_core": false,
+                "report_id": "6779474177930822158"
+            }
+        ],
+        "dashboard_id": "6771985698300887555",
+        "denied": 0,
+        "total": 3
+    }
+}

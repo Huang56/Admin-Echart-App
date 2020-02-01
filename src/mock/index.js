@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import Mock from 'mockjs'
 // import mockData from './mockData'
-import echartData from './echartData'
+import eventAnalysis from './eventAnalysis/eventAnalysis'
 Mock.mock('/eventAnalysys', () => {
-  return { code: 0, data: echartData }
+  return eventAnalysis
 })
 // 输出结果

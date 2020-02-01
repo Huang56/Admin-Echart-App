@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   //　添加插件
   plugins: ["vue"],
-  extends: ["plugin:vue/essential"],
+  extends: ["plugin:vue/essential", "prettier"],
   rules: {
     // allow async-await
     "generator-star-spacing": "off",

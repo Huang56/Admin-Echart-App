@@ -32,11 +32,11 @@
 </template>
 <script>
 import TableComp from './TableComp/TableComp'
-import EchartComp from './EchartComp/EchartComp'
+// import EchartComp from './EchartComp/EchartComp'
 import { getEventData } from '@/api/EventAnalysysApi'
 export default {
   name: 'EventAnalysis',
-  data () {
+  data() {
     return {
       radio: 'line',
       options: {},
@@ -48,11 +48,11 @@ export default {
     }
   },
   components: {
-    TableComp,
-    EchartComp
+    TableComp
+    // EchartComp
   },
   methods: {
-    pullEventData () {
+    pullEventData() {
       this.switch = !this.switch
       const params = {
         switch: this.switch
@@ -66,7 +66,7 @@ export default {
         }
       })
     },
-    changeBtn (val) {
+    changeBtn(val) {
       //  drawEchart
       let options
       console.log('val === ', val === 'percent')
@@ -80,7 +80,7 @@ export default {
 
       this.options = options
     },
-    percentEchart () {
+    percentEchart() {
       const options = this.$deepCopy(this.oringinOptions)
       const arr = []
       options.series.forEach(element => {
@@ -100,7 +100,7 @@ export default {
       })
       return options
     },
-    pieEchart () {
+    pieEchart() {
       const options = this.$deepCopy(this.oringinOptions)
       options.series.forEach(element => {
         element.type = 'pie'
@@ -109,7 +109,7 @@ export default {
       })
       return options
     },
-    changeEchart (val) {
+    changeEchart(val) {
       const options = this.$deepCopy(this.oringinOptions)
       options.series.forEach(element => {
         const isStack = val === 'stack' ? 1 : 0
@@ -126,7 +126,7 @@ export default {
       })
       return options
     },
-    handleTableData (val) {
+    handleTableData(val) {
       const tableData = []
       const tableDataLabel = []
       const series = val.series
@@ -173,7 +173,7 @@ export default {
       console.log('tableDataLabel', this.tableDataLabel)
       console.log('tableData', this.tableData)
     },
-    onMulSelectedData (val, rowId) {
+    onMulSelectedData(val, rowId) {
       const length = val.length
       const tableData = this.$deepCopy(this.tableData)
 
@@ -181,7 +181,7 @@ export default {
         tableData.forEach(item => {
           item.checkbox_disabled = true
           item.selected = false
-          const isTrue = val.some((filterItem) => {
+          const isTrue = val.some(filterItem => {
             return item.id === filterItem.id
           })
           if (isTrue) {
@@ -198,7 +198,7 @@ export default {
         })
       } else if (length === 20) {
         tableData.forEach(item => {
-          const isTrue = val.some((filterItem) => {
+          const isTrue = val.some(filterItem => {
             return item.id === filterItem.id
           })
           if (isTrue) {
@@ -212,7 +212,7 @@ export default {
       }
       this.tableData = tableData
     },
-    onMulSelectedAllData (val) {
+    onMulSelectedAllData(val) {
       const length = val.length
       const tableData = this.$deepCopy(this.tableData)
       if (length === 20) {
@@ -247,7 +247,7 @@ export default {
       console.log('onMulSelectedALLData162', val)
     }
   },
-  mounted () {
+  mounted() {
     this.pullEventData()
   }
 }

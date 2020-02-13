@@ -6,7 +6,8 @@ import router from './router/index'
 import store from './store/index' // vuex
 import i18n from './lang/index' // vuex
 import ElementUI from 'element-ui'
-
+import Bus from './common/libs/bus'
+Vue.use(Bus)
 import './common' // 加载一次即可
 
 import './mock' // 加载一次即可

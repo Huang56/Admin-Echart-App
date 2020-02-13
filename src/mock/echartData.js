@@ -3,10 +3,16 @@ const data = {
     text: '折线图堆叠'
   },
   tooltip: {
-    trigger: 'axis'
+    trigger: 'axis',
+    triggerOn: 'click',
+    // alwaysShowContent: true,
+    show: true
   },
   legend: {
-    data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+    data: ['邮件营销1', '联盟广告1', '视频广告2', '直接访问', '搜索引擎'],
+    formatter: function(name) {
+      return 'Legend2' + name
+    }
   },
   grid: {
     left: '3%',
@@ -29,7 +35,7 @@ const data = {
   },
   series: [
     {
-      name: '邮件营销',
+      name: '邮件营销1',
       type: 'line',
       stack: '总量',
       data: [120, 132, 101, 134, 90, 230, 210]

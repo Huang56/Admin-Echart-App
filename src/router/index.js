@@ -28,6 +28,11 @@ const routes = [
         path: '/converanalysis',
         name: 'converanalysis',
         component: ConverAnalysis
+      },
+      {
+        path: '/dragvue',
+        name: 'dragvue',
+        component: () => import('@/components/DragVue/DragVue')
       }
     ]
   },

@@ -8,17 +8,12 @@
     <el-menu-item index="/dashboard">{{
       $t('top_menu.dashboard')
     }}</el-menu-item>
-    <el-submenu index="2">
-      <template slot="title">我的工作台</template>
-      <el-menu-item index="2-1">选项1</el-menu-item>
-      <el-menu-item index="2-2">选项2</el-menu-item>
-      <el-menu-item index="2-3">选项3</el-menu-item>
-      <el-submenu index="2-4">
-        <template slot="title">选项4</template>
-        <el-menu-item index="2-4-1">选项1</el-menu-item>
-        <el-menu-item index="2-4-2">选项2</el-menu-item>
-        <el-menu-item index="2-4-3">选项3</el-menu-item>
-      </el-submenu>
+    <el-submenu index="/chart">
+      <template slot="title">图形</template>
+      <el-menu-item index="/chart/line">折现图</el-menu-item>
+      <el-menu-item index="/chart/bar">柱形图</el-menu-item>
+      <el-menu-item index="/chart/funnel">漏斗图</el-menu-item>
+      <el-menu-item index="/chart/funnel">桑基图</el-menu-item>
     </el-submenu>
     <el-menu-item index="/dragvue" disabled>dragvue</el-menu-item>
     <el-menu-item index="/eventanalysis">{{
@@ -27,6 +22,10 @@
     <el-menu-item index="/converanalysis">{{
       $t('top_menu.convert_analysis')
     }}</el-menu-item>
+    <el-menu-item index="/action">{{
+      $t('top_menu.action_check')
+    }}</el-menu-item>
+    <el-menu-item index="/user">{{ $t('top_menu.user') }}</el-menu-item>
   </el-menu>
 </template>
 <script>
@@ -51,3 +50,15 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.el-menu-demo {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: 100%;
+  min-width: 778px;
+  .el-menu-item {
+    padding: 0 20px;
+  }
+}
+</style>

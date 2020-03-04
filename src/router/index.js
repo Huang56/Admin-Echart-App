@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Index from '../view/Index/Index'
-import Login from '../view/Login/Login'
+import Index from '@/view/Index/Index'
+import Login from '@/view/Login/Login'
 import DashBoard from '@/components/DashBoard/DashBoard'
 import EventAnalysis from '@/components/EventAnalysis/EventAnalysis'
 import ConverAnalysis from '@/components/ConverAnalysis/ConverAnalysis'
+import ChartPage from '@/components/ChartPage/ChartPage'
+import ChartComp from '@/components/ChartPage/ChartComp/ChartComp'
+
+import route from '@/components/route'
 
 Vue.use(VueRouter)
 const routes = [
@@ -33,7 +37,20 @@ const routes = [
         path: '/dragvue',
         name: 'dragvue',
         component: () => import('@/components/DragVue/DragVue')
-      }
+      },
+      {
+        path: '/chart',
+        name: 'chart',
+        component: ChartPage,
+        children: [
+          {
+            path: '/chart/:id',
+            name: 'chartcomp',
+            component: ChartComp
+          }
+        ]
+      },
+      ...route
     ]
   },
   {

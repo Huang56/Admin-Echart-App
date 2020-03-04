@@ -1,7 +1,9 @@
 <template>
   <el-container>
     <el-header class="top_header">
-      <div>Aaron-Admin</div>
+      <div class="a-logo-container">
+        <img src="@/assets/images/logo.png" alt="logo" class="a-logo" />
+      </div>
       <TopMenu class="top_menu" />
       <div>
         <el-dropdown
@@ -32,7 +34,7 @@
 import TopMenu from './TopMenu/TopMenu'
 export default {
   name: '',
-  data () {
+  data() {
     return {
       chinese: '中文',
       english: 'English',
@@ -43,7 +45,7 @@ export default {
     TopMenu
   },
   methods: {
-    selectLagurage (val) {
+    selectLagurage(val) {
       this.$i18n.locale = val
       this.selected = val
     }
@@ -64,6 +66,14 @@ export default {
     align-items: center;
     padding: 0 60px 1px;
     border-bottom: 1px solid #e6e6e6;
+    .a-logo-container {
+      display: flex;
+      align-items: center;
+      .a-logo {
+        width: 40px;
+      }
+    }
+
     .top_menu {
       flex: 1;
       margin: 0 80px;

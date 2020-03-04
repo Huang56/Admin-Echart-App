@@ -1,4 +1,4 @@
-// import EchartComp from './EchartComp/EchartComp'
+import EchartComp from './EchartComp/EchartComp'
 export default {
-  // EchartComp
+  EchartComp
 }

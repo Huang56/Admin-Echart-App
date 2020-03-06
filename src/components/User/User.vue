@@ -1,12 +1,16 @@
 <template>
-  <el-container>
-    User...
-  </el-container>
+  <div>
+    <div>User...</div>
+    <AFilter />
+  </div>
 </template>
 <script>
+import AFilter from './AFilter/AFilter'
 export default {
   name: 'User',
-  components: {},
+  components: {
+    AFilter
+  },
   data() {
     return {
       input: ' '

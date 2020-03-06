@@ -1,46 +1,25 @@
 <template>
   <div class="a-list-container">
-    <el-collapse v-model="activeNames" @change="handleChange">
-      <template v-for="(topVal, key, index) in text">
-        <div v-if="typeof topVal === `string`" class="a-row" :key="key + index">
-          <span class="a-row-item a-row-key">{{ key }}</span>
-          <div class=" a-row-item a-row-value">{{ topVal }}</div>
-        </div>
-
-        <!-- <ACollapseContent
-          v-else-if="!topVal"
-          :text="topVal"
-          :key="'topVal' + index"
-        /> -->
-        <el-collapse-item
-          v-else
-          title="一致性 Consistency"
-          :name="'topVal' + index"
-          :key="'topVal' + index"
-        >
-          <!-- <ACollapseContent :text="topVal" :key="'topVal' + index" /> -->
-          <div v-for="(two, twoKey, twoIdx) in topVal" :key="'twoKey' + twoIdx">
-            <span v-html="twoKey"></span>
-          </div>
-        </el-collapse-item>
-      </template>
-    </el-collapse>
+    <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick">
+      <span class="custom-tree-node" slot-scope="{ node, data }">
+        <span>{{ node.label }}</span>
+        <span>
+          {{ data.text }}
+        </span>
+      </span>
+    </el-tree>
   </div>
 </template>
+
 <script>
-// import ACollapseContent from '../ACollapseContent/ACollapseContent'
 export default {
-  name: 'AJsonList',
-  components: {
-    // ACollapseContent
-  },
   props: {
-    text: {
-      type: [Object, String],
+    jsonObj: {
+      type: [Object],
       default: () => {
         return {
           __seq_id: 0,
-          server_time: 1582692539,
+          server_time: 1583361189,
           event_type: 'origin',
           __log_type: 'pb_event',
           event_name: '',
@@ -49,64 +28,151 @@ export default {
             _event_version: 'v3',
             os_name: 'ios',
             app_name: 'tea_app_demo_tob',
-            device_model: 'iphone 7 plus',
+            device_model: 'iphone 6s',
             _caller: 'demotea',
             _trace_id: '',
             __os: 'ios',
-            app_channel: 'toutiao_channel',
-            network_type: 'mobile',
-            access: 'mobile',
-            os_version: '4.2.1',
+            app_channel: 'xiaomi_channel',
+            network_type: '3g',
+            access: '3g',
+            os_version: '10.0.0',
             __app_version: 'unknown',
             aid: 151653,
             app_version: 'unknown',
             os: 'ios',
             product_name: 'default_to_b',
-            channel: 'toutiao_channel',
+            channel: 'xiaomi_channel',
             product_id: 0
           },
           params: {
-            code_id: 101231,
-            ad_type: '激励视频',
-            scene_lev: 0,
-            lev: 96,
-            scene_id: 1000,
-            user: '1018642914'
+            happened_hour: 6,
+            user: '1018638019'
           },
           user: {
-            user_unique_id: '1018642914',
+            user_unique_id: '1018638019',
             user_is_auth: 1,
             uid: 0,
             user_is_login: 1
           },
-          time: 1582692539,
+          time: 1583361189,
           __key:
-            '{mario_event:151653:1018642914}1582692539:151653:tea_app_demo_tob:gt_ad_request::pb0000:json+3',
-          event: 'gt_ad_request',
-          local_time_ms: 1582692539000
+            '{mario_event:151653:1018638019}1583361189:151653:tea_app_demo_tob:any_event::pb0000:json+0',
+          event: 'any_event',
+          local_time_ms: [
+            {
+              user_unique_id: '1018638019',
+              user_is_auth: 1,
+              uid: 0,
+              user_is_login: 1
+            },
+            {
+              user_unique_id: '1018638019',
+              user_is_auth: 1,
+              uid: 0,
+              user_is_login: 1
+            },
+            {
+              user_unique_id: '1018638019',
+              user_is_auth: 1,
+              uid: 0,
+              user_is_login: 1
+            }
+          ]
         }
-      }
-    }
-  },
-  computed: {
-    showText: {
-      get() {
-        return JSON.parse(JSON.stringify(this.text))
       }
     }
   },
   data() {
     return {
-      activeNames: ['Params']
+      data: [
+        {
+          label: '一级 1',
+          text: '1231232'
+        },
+        {
+          label: '一级 2',
+          text: '1231232',
+          children: [
+            {
+              label: '二级 2-1',
+              text: '1231232',
+              children: [
+                {
+                  label: '三级 2-1-1',
+                  text: '1231232'
+                }
+              ]
+            },
+            {
+              label: '二级 2-2',
+              text: '1231232',
+              children: [
+                {
+                  label: '三级 2-2-1',
+                  text: '1231232'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: '一级 3',
+          children: [
+            {
+              label: '二级 3-1',
+              children: [
+                {
+                  label: '三级 3-1-1'
+                }
+              ]
+            },
+            {
+              label: '二级 3-2',
+              children: [
+                {
+                  label: '三级 3-2-1'
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      defaultProps: {
+        children: 'children',
+        label: 'label'
+      }
     }
   },
   methods: {
-    handleChange(val) {
-      console.log(val)
+    handleNodeClick(data) {
+      console.log(data)
+    },
+    handleData(data) {
+      const arr = []
+      for (const key in data) {
+        const isTrue =
+          typeof data[key] === 'string' ||
+          typeof data[key] === 'number' ||
+          Array.isArray(data[key])
+        const obj = {
+          label: key
+        }
+        if (isTrue) {
+          // arr.push(obj)
+          obj.text = data[key]
+        } else {
+          const result = this.handleData(data[key])
+          obj.children = result
+        }
+        arr.push(obj)
+      }
+      return arr
     }
   },
   mounted() {
-    console.log('AJsonList')
+    const data = this.handleData(this.jsonObj)
+    this.data = data
+    console.log('this.data', data, typeof data)
   }
 }
 </script>

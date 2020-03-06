@@ -5,7 +5,7 @@
       <div class="a-collapse-title">{{ title }}</div>
     </div>
     <template v-for="(topVal, key, index) in text">
-      <div class="a-row" :key="key + index">
+      <div class="a-row" :key="'key' + index">
         <span class="a-row-item a-row-key">{{ key }}</span>
         <div class=" a-row-item a-row-value">{{ topVal }}</div>
       </div>

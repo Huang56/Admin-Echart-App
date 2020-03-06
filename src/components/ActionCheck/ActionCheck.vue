@@ -1,23 +1,23 @@
 <template>
   <div class="a-wrap">
-    <ASearch />
+    <!-- <ASearch /> -->
     <!-- <AJsonShow /> -->
     <AJsonList />
-    <ACollapseItem />
+    <!-- <ACollapseItem /> -->
   </div>
 </template>
 <script>
 // import AJsonShow from './AJsonShow/AJsonShow'
 import AJsonList from './AJsonList/AJsonList'
-import ACollapseItem from './ACollapseItem/ACollapseItem'
-import ASearch from './ASearch/ASearch'
+// import ACollapseItem from './ACollapseItem/ACollapseItem'
+// import ASearch from './ASearch/ASearch'
 export default {
   name: 'ActionCheck',
   components: {
     // AJsonShow,
-    AJsonList,
-    ASearch,
-    ACollapseItem
+    AJsonList
+    // ASearch,
+    // ACollapseItem
   },
   data() {
     return {

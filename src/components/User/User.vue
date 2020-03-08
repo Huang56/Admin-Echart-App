@@ -2,18 +2,22 @@
   <div>
     <div>User...</div>
     <AFilter />
+    <AFuther />
   </div>
 </template>
 <script>
 import AFilter from './AFilter/AFilter'
+import AFuther from './AFuther/AFuther'
 export default {
   name: 'User',
   components: {
-    AFilter
+    AFilter,
+    AFuther
   },
   data() {
     return {
-      input: ' '
+      input: ' ',
+      number: 0
     }
   },
   methods: {
@@ -23,11 +27,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.a-input-button {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-}
-</style>
+<style lang="scss" scoped></style>

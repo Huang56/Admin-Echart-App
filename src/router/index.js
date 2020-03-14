@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Index from '@/view/Index/Index'
-import Login from '@/view/Login/Login'
-import DashBoard from '@/components/DashBoard/DashBoard'
-import EventAnalysis from '@/components/EventAnalysis/EventAnalysis'
-import ConverAnalysis from '@/components/ConverAnalysis/ConverAnalysis'
-import ChartPage from '@/components/ChartPage/ChartPage'
-import ChartComp from '@/components/ChartPage/ChartComp/ChartComp'
+import Index from '@/Layout/Index/Index'
+import Login from '@/Layout/Login/Login'
+import DashBoard from '@/view/DashBoard/DashBoard'
+import EventAnalysis from '@/view/EventAnalysis/EventAnalysis'
+import ConverAnalysis from '@/view/ConverAnalysis/ConverAnalysis'
+import ChartPage from '@/view/ChartPage/ChartPage'
+import ChartComp from '@/view/ChartPage/ChartComp/ChartComp'
 
-import route from '@/components/route'
+import route from '@/view/route'
 
 Vue.use(VueRouter)
 const routes = [

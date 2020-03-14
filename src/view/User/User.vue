@@ -4,16 +4,19 @@
     <div>User...</div>
 
     <AFuther />
+    <loadfile />
   </div>
 </template>
 <script>
 import AFilter from './AFilter/AFilter'
+import loadfile from './loadfile/loadfile'
 import AFuther from './AFuther/AFuther'
 export default {
-  name: 'User',
+  name: 'Upload',
   components: {
     AFilter,
-    AFuther
+    AFuther,
+    loadfile
   },
   data() {
     return {

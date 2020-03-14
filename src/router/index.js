@@ -36,7 +36,7 @@ const routes = [
       {
         path: '/dragvue',
         name: 'dragvue',
-        component: () => import('@/components/DragVue/DragVue')
+        component: () => import('@/view/DragVue/DragVue')
       },
       {
         path: '/chart',

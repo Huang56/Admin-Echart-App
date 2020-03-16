@@ -13,7 +13,22 @@
     <div v-show="!show" class="modify-click-item">
       <slot>
         <span>{{ input }}</span>
-        <i :class="icon" @click="editBtn(true)"></i>
+        <el-tooltip
+          placement="top"
+          v-model="treeVisible"
+          :manual="true"
+          id="el-tooltip"
+        >
+          <div slot="content">
+            <el-tree
+              :data="data"
+              :props="defaultProps"
+              @node-click="handleNodeClick"
+            ></el-tree>
+          </div>
+          <i :class="icon2" @click.stop="treeVisible = !treeVisible"></i>
+        </el-tooltip>
+        <i :class="icon" @click.stop="editBtn(true)"></i>
       </slot>
     </div>
   </div>
@@ -25,6 +40,10 @@ export default {
     icon: {
       type: String,
       default: () => 'el-icon-edit'
+    },
+    icon2: {
+      type: String,
+      default: () => 'el-icon-plus'
     },
     item: {
       type: Object,
@@ -43,7 +62,70 @@ export default {
     return {
       input: '',
       show: false,
-      width: 158
+      width: 158,
+      visible: false,
+      treeVisible: false,
+      data: [
+        {
+          label: '一级 1',
+          children: [
+            {
+              label: '二级 1-1',
+              children: [
+                {
+                  label: '三级 1-1-1'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: '一级 2',
+          children: [
+            {
+              label: '二级 2-1',
+              children: [
+                {
+                  label: '三级 2-1-1'
+                }
+              ]
+            },
+            {
+              label: '二级 2-2',
+              children: [
+                {
+                  label: '三级 2-2-1'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: '一级 3',
+          children: [
+            {
+              label: '二级 3-1',
+              children: [
+                {
+                  label: '三级 3-1-1'
+                }
+              ]
+            },
+            {
+              label: '二级 3-2',
+              children: [
+                {
+                  label: '三级 3-2-1'
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      defaultProps: {
+        children: 'children',
+        label: 'label'
+      }
     }
   },
   components: {},
@@ -65,9 +147,20 @@ export default {
       if (data) return
       this.$emit('editInput', params)
       this.$bus.emit('editInput', params)
+    },
+    handleNodeClick(data) {
+      console.log(data)
     }
   },
   mounted() {
+    // document.removeEventListener('click', () => {
+    //   console.log('removeEventListener')
+    // })
+    document.addEventListener('click', () => {
+      if (this.treeVisible) {
+        this.treeVisible = false
+      }
+    })
     this.input = this.item.text && this.item.text
   },
   directives: {
